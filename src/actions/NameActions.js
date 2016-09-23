@@ -1,19 +1,12 @@
 import AppDispatcher from '../AppDispatcher'
 
 const NameActions = {
-  createName(name) {
+  createProfile(profile) {
     AppDispatcher.dispatch({
       type: 'CREATE_NAME',
-      payload: { name }
+      payload: profile
     })
   },
-
-  // addImage(image) {
-  //   AppDispatcher.dispatch({
-  //     type: 'ADD_IMAGE',
-  //     payload: { image }
-  //   })
-  // }
 }
 
 export default NameActions;

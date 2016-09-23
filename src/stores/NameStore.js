@@ -1,7 +1,7 @@
 import AppDispatcher from '../AppDispatcher'; // store is watching Dispatcher
 import { EventEmitter } from 'events';
 
-let _name = [];
+let _profile = { name: '', image: '', bio:''};
 
 const NameStore = Object.assign({}, EventEmitter.prototype, {
 
@@ -14,8 +14,8 @@ const NameStore = Object.assign({}, EventEmitter.prototype, {
   },
 
   getAll() {
-    return _name;
-    // console.log('_name:', _name);
+    return _profile;
+    // console.log('_profile:', _profile);
   }
 });
 
@@ -26,8 +26,15 @@ AppDispatcher.register(action => {
 
   switch(type) {
     case 'CREATE_NAME':
-      const { name } = payload;
-      _name = name;
+      // const profile = {
+      //   bio: payload.bio,
+      //   image: payload.image,
+      //   name: payload.name
+      // }
+      // console.log('profile', profile);
+      _profile = Object.assign({}, payload);
+      console.log('_profile', _profile);
+      // _profile = profile;
 
       NameStore.emit('CHANGE');
     break;

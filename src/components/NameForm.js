@@ -3,24 +3,32 @@ import React from 'react';
 const NameForm = React.createClass({
   submitForm(e) {
     e.preventDefault();
-    const { nameInput, image } = this.refs;
+    const { name, image, bio } = this.refs;
 
-    let newName = nameInput.value;
-    let newImage = image;
-    nameInput.value = '';
-    nameInput.focus();
+    let newProfile = {
+      name: name.value,
+      image: image.value,
+      bio: bio.value,
+      editing: false
+    }
 
-    this.props.addName(newName);
+    name.value = '';
+    image.value = '';
+    bio.value = '';
+    name.focus();
 
+    this.props.addName(newProfile);
   },
 
   render() {
     return (
       <form onSubmit={this.submitForm}>
         Name:
-        <input ref='nameInput' type="text" required/>
+        <input ref='name' type="text" required/>
         image URL:
         <input ref='image' type="text"/>
+        Bio:
+        <input ref='bio' type="text"/>
         <button>Submit</button>
       </form>
     )

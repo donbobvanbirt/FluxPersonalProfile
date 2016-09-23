@@ -8,7 +8,7 @@ import NameStore from '../stores/NameStore'
 const App = React.createClass({
   getInitialState() {
     return {
-      name: NameStore.getAll()
+      name: ''
     }
   },
 
@@ -22,24 +22,28 @@ const App = React.createClass({
   },
 
   _onChange() {
-    this.setState({
-      name: NameStore.getAll()
-    });
+    this.setState( NameStore.getAll() );
   },
 
-  addName(newName) {
-    NameActions.createName(newName);
+  addName(newProfile) {
+    // let newProfile = {
+    //   name: name,
+    //   image: image,
+    //   bio: bio
+    // }
+
+    NameActions.createProfile(newProfile);
     // NameActions.addImage(image);
   },
 
   render () {
-    const { name } = this.state;
-    console.log('name:', name);
+    const { name, image, bio, editing } = this.state;
+    // console.log('name:', name);
     return (
       <div className="container">
         <h1>Flux Personal Profile</h1>
         <NameForm addName={this.addName} />
-        <NameList name={name} />
+        <NameList name={name} image={image} bio={bio} editing={editing}/>
       </div>
     )
   }

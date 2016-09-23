@@ -1,10 +1,14 @@
 import React from 'react';
 
 const NameList = props => {
-  const { name } = props;
+  const { name, image, bio } = props;
 
   return (
-    <h3>{name}</h3>
+    <div>
+      <img src={image} alt={name} id='profilePic'/>
+      <h3>{name}</h3>
+      <p>{bio}</p>
+    </div>
   )
 }
 
