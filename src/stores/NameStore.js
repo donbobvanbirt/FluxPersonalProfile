@@ -15,7 +15,6 @@ const NameStore = Object.assign({}, EventEmitter.prototype, {
 
   getAll() {
     return _profile;
-    // console.log('_profile:', _profile);
   }
 });
 
@@ -26,16 +25,8 @@ AppDispatcher.register(action => {
 
   switch(type) {
     case 'CREATE_NAME':
-      // const profile = {
-      //   bio: payload.bio,
-      //   image: payload.image,
-      //   name: payload.name
-      // }
-      // console.log('profile', profile);
       _profile = Object.assign({}, payload);
       console.log('_profile', _profile);
-      // _profile = profile;
-
       NameStore.emit('CHANGE');
     break;
   }
